@@ -1,3 +1,11 @@
+/**
+ * Name: Marc Alejandro
+ * Date: 03/13/19
+ * Explanation: Instructor.java details an instructor under School.java.
+ */
+
+import java.util.HashMap;
+
 public class Instructor {
 
     //fields
@@ -5,7 +13,9 @@ public class Instructor {
     private String name;
     private String email;
     private String phoneNumber;
-    private int currentCourse;
+
+    //object dependent fields
+    private HashMap<Integer, Course> currentCourses;
 
     //getters and setters
 
@@ -41,22 +51,36 @@ public class Instructor {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getCurrentCourse() {
-        return currentCourse;
+    public HashMap<Integer, Course> getCurrentCourses() {
+        return currentCourses;
     }
 
-    public void setCurrentCourse(int currentCourse) {
-        this.currentCourse = currentCourse;
+    public void setCurrentCourses(HashMap<Integer, Course> currentCourses) {
+        this.currentCourses = currentCourses;
     }
 
     //constructor
-
 
     public Instructor(int number, String name, String email, String phoneNumber) {
         this.number = number;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.currentCourse = 0;
+        this.currentCourses = new HashMap<>();
+    }
+
+    // toString()
+
+
+    @Override
+    public String toString() {
+        String num = "Instructor number: " + this.number;
+        String name = "\nName: " + this.name;
+        String currentlyTeaching = "\nCurrently Teaching: ";
+        for (Integer i : this.currentCourses.keySet()) {
+            currentlyTeaching += "\n" + i + ": " + this.currentCourses.get(i).getNumStudents() + " enrolled";
+        }
+
+        return num + name + currentlyTeaching;
     }
 }

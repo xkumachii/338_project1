@@ -1,4 +1,10 @@
-import java.util.ArrayList;
+/**
+ * Name: Marc Alejandro
+ * Date: 03/13/19
+ * Explanation: Course.java details a course under School.java.
+ */
+
+
 import java.util.HashMap;
 
 public class Course {
@@ -13,9 +19,10 @@ public class Course {
     // object-dependent fields;
 
     private int numStudents;
-    private String currentInstructor;
-    private ArrayList<Student> students;
-    private HashMap<Student, Integer> scores;
+    private Instructor currentInstructor;
+    private HashMap<Integer, Student> students;
+    private HashMap<Integer, Double> scores;
+    private boolean isInstructor;
 
     //getters and setters
 
@@ -51,6 +58,46 @@ public class Course {
         this.courseLocation = courseLocation;
     }
 
+    public int getNumStudents() {
+        return numStudents;
+    }
+
+    public void setNumStudents(int numStudents) {
+        this.numStudents = numStudents;
+    }
+
+    public Instructor getCurrentInstructor() {
+        return currentInstructor;
+    }
+
+    public void setCurrentInstructor(Instructor currentInstructor) {
+        this.currentInstructor = currentInstructor;
+    }
+
+    public HashMap<Integer, Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(HashMap<Integer, Student> students) {
+        this.students = students;
+    }
+
+    public HashMap<Integer, Double> getScores() {
+        return scores;
+    }
+
+    public void setScores(HashMap<Integer, Double> scores) {
+        this.scores = scores;
+    }
+
+    public boolean isInstructor() {
+        return isInstructor;
+    }
+
+    public void setInstructor(boolean instructor) {
+        isInstructor = instructor;
+    }
+
     //constructors
 
     public Course(int courseNum, String courseTitle, int courseCapacity, String courseLocation) {
@@ -59,8 +106,9 @@ public class Course {
         this.courseCapacity = courseCapacity;
         this.courseLocation = courseLocation;
         this.numStudents = 0;
-        this.students = new ArrayList<>();
+        this.students = new HashMap<>();
         this.scores = new HashMap<>();
+        this.isInstructor = false;
     }
 
     // public functions
